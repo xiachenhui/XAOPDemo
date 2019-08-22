@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:onClick="shake"
+        android:id="@+id/shake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="摇一摇" />
+
+    <Button
+        android:onClick="voice"
+        android:id="@+id/voice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送语音" />
+
+    <Button
+        android:onClick="video"
+        android:id="@+id/video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送视频" />
+
+    <Button
+        android:onClick="something"
+        android:id="@+id/something"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发表说说" />
+    <Button
+        android:onClick="login"
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转到登录" />
+</LinearLayout>
