@@ -28,7 +28,7 @@ public class MyHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Object object = null;
-        boolean isLogin = PreferenceUtils.getBoolean(PreferenceUtils.ISLOGIN, mContext);
+        boolean isLogin = PreferenceUtils.getBoolean(PreferenceUtils.IS_LOGIN, mContext);
         if (isLogin) {
             object= method.invoke(target, args);
         } else {

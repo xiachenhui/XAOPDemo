@@ -4,8 +4,13 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.example.aopdemo.inter.ASILogin;
-import com.example.aopdemo.inter.ILogin;
 
+/**
+ * author : xia chen hui
+ * email : 184415359@qq.com
+ * date : 2019/8/23/023 21:22
+ * desc : 登录SDK
+ **/
 public class LoginSDK {
 
     private static LoginSDK loginSDK;

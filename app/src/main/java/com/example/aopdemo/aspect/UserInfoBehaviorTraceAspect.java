@@ -1,9 +1,7 @@
 package com.example.aopdemo.aspect;
 
-import android.os.SystemClock;
 import android.util.Log;
 
-import com.example.aopdemo.annotation.BehaviorTrace;
 import com.example.aopdemo.annotation.UserInfoBehaviorTrace;
 
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -12,11 +10,12 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
-import java.util.Random;
-
 /**
- * 表示面
- */
+ * author : xia chen hui
+ * email : 184415359@qq.com
+ * date : 2019/8/23/023 21:16
+ * desc : 用户行为监控
+ **/
 @Aspect
 public class UserInfoBehaviorTraceAspect {
     //定义切面规则
@@ -38,13 +37,13 @@ public class UserInfoBehaviorTraceAspect {
     public Object weaveJoinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
         Object proceed = joinPoint.proceed();
         //joinPoint可以获取到方法的签名
-        MethodSignature methodSignature= (MethodSignature) joinPoint.getSignature();
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         //通过方法的签名可以获取到className 和methodName
         String className = methodSignature.getDeclaringType().getSimpleName();
         String methodName = methodSignature.getName();
         //获取注解的值
         String value = methodSignature.getMethod().getAnnotation(UserInfoBehaviorTrace.class).value();
-        Log.d("HeiBai",String.format("%s 功能, %s 类的 %s 方法被执行了",value,className,methodName));
+        Log.d("HeiBai", String.format("%s 功能, %s 类的 %s 方法被执行了", value, className, methodName));
         return proceed;
 
     }

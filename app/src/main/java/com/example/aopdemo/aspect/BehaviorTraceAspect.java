@@ -14,8 +14,12 @@ import org.aspectj.lang.reflect.MethodSignature;
 import java.util.Random;
 
 /**
- * 表示面
- */
+ * author : xia chen hui 
+ * email : 184415359@qq.com
+ * date : 2019/8/23/023 21:15
+ * desc : 性能监控检测
+ *
+**/
 @Aspect
 public class BehaviorTraceAspect {
     //定义切面规则

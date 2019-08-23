@@ -1,7 +1,6 @@
 package com.example.aopdemo.aspect;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.example.aopdemo.annotation.AOPLoginTrace;
 import com.example.aopdemo.exception.AnnotationException;
@@ -15,9 +14,13 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-
-import java.lang.reflect.Method;
-
+/**
+ * author : xia chen hui
+ * email : 184415359@qq.com
+ * date : 2019/8/23/023 21:15
+ * desc :  登录检测
+ *
+**/
 @Aspect
 public class AOPLoginTraceAspect {
     private static final String TAG = "XIA";

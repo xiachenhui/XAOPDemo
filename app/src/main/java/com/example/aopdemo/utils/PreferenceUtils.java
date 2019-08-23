@@ -3,9 +3,15 @@ package com.example.aopdemo.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/**
+ * author : xia chen hui
+ * email : 184415359@qq.com
+ * date : 2019/8/23/023 21:23
+ * desc :Preference工具类
+ **/
 public class PreferenceUtils {
 
-    public static String ISLOGIN = "isLogin";
+    public static String IS_LOGIN = "isLogin";
     private static String PREFERENCE_NAME = "XPreference";
 
 

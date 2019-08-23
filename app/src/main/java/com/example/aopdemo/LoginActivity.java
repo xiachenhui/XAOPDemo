@@ -4,9 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.aopdemo.annotation.AOPLoginTrace;
-import com.example.aopdemo.utils.LoginAssistant;
-import com.example.aopdemo.utils.LoginSDK;
 import com.example.aopdemo.utils.PreferenceUtils;
 
 /**
@@ -24,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        PreferenceUtils.setBoolean(PreferenceUtils.ISLOGIN, true, this);
+        PreferenceUtils.setBoolean(PreferenceUtils.IS_LOGIN, true, this);
         finish();
     }
 }

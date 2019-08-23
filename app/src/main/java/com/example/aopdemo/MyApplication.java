@@ -25,7 +25,6 @@ public class MyApplication extends Application {
 
             switch (userDefine) {
                 case 0:
-                    Log.d(TAG,"333");
                     Intent intent = new Intent(applicationContext, LoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     applicationContext.startActivity(intent);
@@ -42,13 +41,13 @@ public class MyApplication extends Application {
 
         @Override
         public boolean isLogin(Context applicationContext) {
-            boolean aBoolean = PreferenceUtils.getBoolean(PreferenceUtils.ISLOGIN, applicationContext);
+            boolean aBoolean = PreferenceUtils.getBoolean(PreferenceUtils.IS_LOGIN, applicationContext);
             return aBoolean;
         }
 
         @Override
         public void clearLoginStatus(Context applicationContext) {
-            PreferenceUtils.setBoolean(PreferenceUtils.ISLOGIN, false, applicationContext);
+            PreferenceUtils.setBoolean(PreferenceUtils.IS_LOGIN, false, applicationContext);
         }
     };
 
