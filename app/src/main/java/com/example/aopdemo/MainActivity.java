@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.aopdemo.annotation.AOPLoginTrace;
 import com.example.aopdemo.annotation.BehaviorTrace;
 import com.example.aopdemo.annotation.UserInfoBehaviorTrace;
 
@@ -21,21 +22,21 @@ public class MainActivity extends AppCompatActivity {
     public void shake(View view) {
 
     }
-
+    @UserInfoBehaviorTrace("语音消息")
     @BehaviorTrace("语音消息")
     public void voice(View view) {
     }
-
+    @UserInfoBehaviorTrace("视频消息")
     @BehaviorTrace("视频消息")
     public void video(View view) {
     }
-
+    @UserInfoBehaviorTrace("发送说说")
     @BehaviorTrace("发送说说")
     public void something(View view) {
     }
 
-    @BehaviorTrace("登录")
+   @AOPLoginTrace
     public void login(View view) {
-        startActivity(new Intent(this, XTestActivity.class));
+       startActivity(new Intent(this, XTestActivity.class));
     }
 }

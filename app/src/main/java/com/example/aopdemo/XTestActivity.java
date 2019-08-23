@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.aopdemo.annotation.AOPLoginTrace;
 import com.example.aopdemo.inter.ILogin;
 import com.example.aopdemo.utils.PreferenceUtils;
 
@@ -18,10 +19,11 @@ public class XTestActivity extends AppCompatActivity implements ILogin {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        proxyLogin = (ILogin) Proxy.newProxyInstance(this.getClassLoader(), new Class[]{ILogin.class}, new MyHandler(this, this));
+           proxyLogin = (ILogin) Proxy.newProxyInstance(this.getClassLoader(), new Class[]{ILogin.class}, new MyHandler(this, this));
     }
 
-    public void check(View view) {
+
+    public void me(View view) {
         proxyLogin.toLoin();
     }
 
@@ -29,17 +31,19 @@ public class XTestActivity extends AppCompatActivity implements ILogin {
         proxyLogin.toLoin();
     }
 
-    public void me(View view) {
-        proxyLogin.toLoin();
+    @AOPLoginTrace
+    public void check(View view) {
+        // proxyLogin.toLoin();
     }
 
     @Override
     public void toLoin() {
-        startActivity(new Intent(this,MemberActivity.class));
+        startActivity(new Intent(this, MemberActivity.class));
 
     }
 
     public void loginOut(View view) {
         PreferenceUtils.setBoolean(PreferenceUtils.ISLOGIN, false, this);
+        finish();
     }
 }

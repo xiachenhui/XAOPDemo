@@ -4,6 +4,7 @@ import android.os.SystemClock;
 import android.util.Log;
 
 import com.example.aopdemo.annotation.BehaviorTrace;
+import com.example.aopdemo.annotation.UserInfoBehaviorTrace;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -23,7 +24,7 @@ public class UserInfoBehaviorTraceAspect {
 
     //这个注解表示切入点,executions(@注解名 注解用的地方)  *表示所有的地方
     @Pointcut("execution(@com.example.aopdemo.annotation.UserInfoBehaviorTrace * *(..))")
-    public void methodAnnotatesWithBehaviorTrace() {
+    public void methodAnnotatesWithUserInfoBehaviorTrace() {
 
     }
 
@@ -33,10 +34,18 @@ public class UserInfoBehaviorTraceAspect {
     //@Before 在切入点之前运行
     //@After 在切入点之后运行
     //@Around 在切入点前后都运行
-    @Around("methodAnnotatesWithBehaviorTrace()")
+    @Around("methodAnnotatesWithUserInfoBehaviorTrace()")
     public Object weaveJoinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
-        Log.d("HeiBai", "被执行了");
-        return null;
+        Object proceed = joinPoint.proceed();
+        //joinPoint可以获取到方法的签名
+        MethodSignature methodSignature= (MethodSignature) joinPoint.getSignature();
+        //通过方法的签名可以获取到className 和methodName
+        String className = methodSignature.getDeclaringType().getSimpleName();
+        String methodName = methodSignature.getName();
+        //获取注解的值
+        String value = methodSignature.getMethod().getAnnotation(UserInfoBehaviorTrace.class).value();
+        Log.d("HeiBai",String.format("%s 功能, %s 类的 %s 方法被执行了",value,className,methodName));
+        return proceed;
 
     }
 

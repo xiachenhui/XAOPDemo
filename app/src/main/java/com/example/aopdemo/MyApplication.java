@@ -6,16 +6,10 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.example.aopdemo.inter.ASILogin;
-import com.example.aopdemo.utils.LoginAssitant;
 import com.example.aopdemo.utils.LoginSDK;
 
 public class MyApplication extends Application {
 
-
-
-    public ASILogin getiLogin() {
-        return iLogin;
-    }
 
     @Override
     public void onCreate() {
