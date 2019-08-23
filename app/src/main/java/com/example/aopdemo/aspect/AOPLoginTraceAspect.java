@@ -12,13 +12,15 @@ import com.example.aopdemo.utils.LoginAssistant;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
 import java.lang.reflect.Method;
 
+@Aspect
 public class AOPLoginTraceAspect {
-    private static final String TAG ="XIA---";
+    private static final String TAG = "XIA";
 
     @Pointcut("execution(@com.example.aopdemo.annotation.AOPLoginTrace * *(..))")
     public void AOPLoginTrace() {
@@ -27,7 +29,6 @@ public class AOPLoginTraceAspect {
 
     @Around("AOPLoginTrace()")
     public void aroundLogin(ProceedingJoinPoint joinPoint) throws Throwable {
-        Log.d(TAG,"----");
         ASILogin iLogin = LoginAssistant.getInstance().getLogin();
         if (iLogin == null) {
             throw new NoInitException("LoginSDk 没有初始化");
@@ -36,18 +37,18 @@ public class AOPLoginTraceAspect {
         if (!(signature instanceof MethodSignature)) {
             throw new AnnotationException("AOPLoginTrace 只能作用于方法上");
         }
-
         MethodSignature methodSignature = (MethodSignature) signature;
         AOPLoginTrace loginTrace = methodSignature.getMethod().getAnnotation(AOPLoginTrace.class);
         if (loginTrace == null) {
             return;
         }
-
         Context context = LoginAssistant.getInstance().getApplicationContext();
         if (iLogin.isLogin(context)) {
+            //表示继续执行下一个方法
             joinPoint.proceed();
+
         } else {
-            iLogin.login(context, loginTrace .userDefine());
+            iLogin.login(context, loginTrace.userDefine());
         }
 
     }

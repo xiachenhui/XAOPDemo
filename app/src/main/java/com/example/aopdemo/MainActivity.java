@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public void something(View view) {
     }
 
-   @AOPLoginTrace
+    @UserInfoBehaviorTrace("发送说说")
     public void login(View view) {
        startActivity(new Intent(this, XTestActivity.class));
     }

@@ -4,8 +4,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.aopdemo.annotation.AOPLoginTrace;
+import com.example.aopdemo.utils.LoginAssistant;
+import com.example.aopdemo.utils.LoginSDK;
 import com.example.aopdemo.utils.PreferenceUtils;
 
+/**
+ * author : xia chen hui
+ * email : 184415359@qq.com
+ * date : 2019/8/23/023 19:36
+ * desc : proxy代理方式处理登录
+ **/
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -15,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        PreferenceUtils.setBoolean(PreferenceUtils.ISLOGIN,true,this);
+        PreferenceUtils.setBoolean(PreferenceUtils.ISLOGIN, true, this);
         finish();
     }
 }

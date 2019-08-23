@@ -3,14 +3,16 @@ package com.example.aopdemo;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.aopdemo.inter.ASILogin;
 import com.example.aopdemo.utils.LoginSDK;
+import com.example.aopdemo.utils.PreferenceUtils;
 
 public class MyApplication extends Application {
 
-
+    private static final String TAG ="XIA";
     @Override
     public void onCreate() {
         super.onCreate();
@@ -23,6 +25,7 @@ public class MyApplication extends Application {
 
             switch (userDefine) {
                 case 0:
+                    Log.d(TAG,"333");
                     Intent intent = new Intent(applicationContext, LoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     applicationContext.startActivity(intent);
@@ -39,12 +42,13 @@ public class MyApplication extends Application {
 
         @Override
         public boolean isLogin(Context applicationContext) {
-            return false;
+            boolean aBoolean = PreferenceUtils.getBoolean(PreferenceUtils.ISLOGIN, applicationContext);
+            return aBoolean;
         }
 
         @Override
         public void clearLoginStatus(Context applicationContext) {
-
+            PreferenceUtils.setBoolean(PreferenceUtils.ISLOGIN, false, applicationContext);
         }
     };
 
